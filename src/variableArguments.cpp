@@ -17,5 +17,20 @@ NOTES: 		use stdarg.h header.
 
 int variableArguments(int arg_count, ...)
 {
+	va_list valist;
+	int count = 0;
+	/* initialize valist for num number of arguments */
+	va_start(valist, arg_count);
+
+	/* access all the arguments assigned to valist */
+	for (int i = 0; i < arg_count; i++) {
+		if (va_arg(valist, int) > 90){
+			count++;
+		}
+	}
+
+	/* clean memory reserved for valist */
+	va_end(valist);
+	return count;
 	return 0;
 }
